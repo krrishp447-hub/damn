@@ -102,11 +102,13 @@ body.cur-s #cur-ring{width:54px;height:54px;border-color:var(--lime);border-widt
 #cam-screen.exit{opacity:0;transform:scale(.93);pointer-events:none}
 .cam-byline{
   font-family:var(--M);font-size:clamp(7.68px,8.8px,9.6px);letter-spacing:.26em;
-  text-transform:uppercase;color:var(--dim);margin-bottom:6.4px;z-index:2;
+  text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:6.4px;z-index:2;
   display:flex;align-items:center;gap:9.6px;
+  text-shadow: 0 0 8px rgba(240,212,41,0.4), 0 0 12px rgba(240,212,41,0.15);
 }
-.cam-byline::before,.cam-byline::after{content:'';height:1px;width:18px;background:linear-gradient(90deg,transparent,var(--dim))}
+.cam-byline::before,.cam-byline::after{content:'';height:1px;width:18px;background:linear-gradient(90deg,transparent,var(--muted))}
 .cam-byline::after{transform:scaleX(-1)}
+
 
 /* ═══════════ CAMERA BODY ═══════════ */
 #camera{
