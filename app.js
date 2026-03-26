@@ -282,13 +282,23 @@ function startCamera() {
       gsap.set('#camera', { opacity: 1, scale: 1, y: 0 });
       gsap.set('.cam-filmstrip', { y: 0, opacity: 1 });
       gsap.set('.cam-byline', { opacity: 1 });
+      showInstructionToast();
     } else {
       gsap.from('#camera', { z: -100, y: 80, opacity: 0, scale: .8, rotationX: -10, duration: 1.6, ease: 'back.out(1.2)', delay: .05 });
       gsap.from('.cam-filmstrip', { y: 40, opacity: 0, duration: 1.2, ease: 'power3.out', delay: .7 });
-      gsap.from('.cam-byline', { opacity: 0, duration: 1, delay: .88 });
+      gsap.from('.cam-byline', { opacity: 0, duration: 1, delay: .88, onComplete: showInstructionToast });
       gsap.to('#lens-ring', { rotation: 1.6, duration: 5.5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
     }
   });
+}
+
+function showInstructionToast() {
+  const toast = document.getElementById('instruction-toast');
+  if(!toast) return;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4500);
 }
 
 /* ════════════════════════════════
