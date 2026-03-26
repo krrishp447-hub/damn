@@ -359,18 +359,31 @@ btnNext.addEventListener('pointerup', e => { e.stopPropagation(); goNext(e); });
 btnPrev.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); goPrev(e); });
 btnNext.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); goNext(e); });
 
+let _lCap = 0;
 function handleCapture(e) {
-  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const now = Date.now();
+  if (now - _lCap < 150) return;
+  _lCap = now;
+  if (e) {
+    if (e.cancelable) e.preventDefault();
+    e.stopPropagation();
+  }
   if (polOut) { openPanel(e); return; }
   fireShutter();
 }
+
 const shutter = document.getElementById('shutter');
+shutter.addEventListener('pointerup', handleCapture);
+shutter.addEventListener('touchend', handleCapture, { passive: false });
 shutter.addEventListener('click', handleCapture);
-shutter.addEventListener('pointerup', e => {
-  if (e.pointerType !== 'mouse') handleCapture(e);
+shutter.addEventListener('keydown', e => {
+  if (e.key === ' ' || e.key === 'Enter') handleCapture(e);
 });
+
 shutter.addEventListener('mouseenter', () => document.body.classList.add('cur-s'));
 shutter.addEventListener('mouseleave', () => document.body.classList.remove('cur-s'));
+
+
 
 
 function fireShutter() {
