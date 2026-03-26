@@ -263,7 +263,9 @@ body.cur-s #cur-ring{width:54px;height:54px;border-color:var(--lime);border-widt
   content:'';position:absolute;inset:-2px;border-radius:50%;
   background:conic-gradient(from 0deg,transparent 55%,rgba(240,212,41,.12) 75%,rgba(240,212,41,.02) 100%);
   animation:sG 3.5s linear infinite;
+  pointer-events:none;
 }
+
 @keyframes sG{to{transform:rotate(360deg)}}
 .cam-shutter{
   /* TOUCH: large enough for thumb */

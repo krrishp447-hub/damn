@@ -359,12 +359,19 @@ btnNext.addEventListener('pointerup', e => { e.stopPropagation(); goNext(e); });
 btnPrev.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); goPrev(e); });
 btnNext.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); goNext(e); });
 
-document.getElementById('shutter').addEventListener('click', e => {
-  if (polOut) { openPanel(e); return }
+function handleCapture(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  if (polOut) { openPanel(e); return; }
   fireShutter();
+}
+const shutter = document.getElementById('shutter');
+shutter.addEventListener('click', handleCapture);
+shutter.addEventListener('pointerup', e => {
+  if (e.pointerType !== 'mouse') handleCapture(e);
 });
-document.getElementById('shutter').addEventListener('mouseenter', () => document.body.classList.add('cur-s'));
-document.getElementById('shutter').addEventListener('mouseleave', () => document.body.classList.remove('cur-s'));
+shutter.addEventListener('mouseenter', () => document.body.classList.add('cur-s'));
+shutter.addEventListener('mouseleave', () => document.body.classList.remove('cur-s'));
+
 
 function fireShutter() {
   const s = SECS[idx];
