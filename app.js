@@ -248,6 +248,7 @@ function showInteractiveLoad() {
   
   const can = document.getElementById('il-canister');
   can.onclick = () => {
+    try { AmbientSound.start(); } catch(e) {}
     can.classList.add('inserting');
     document.getElementById('il-text').style.opacity = '0';
     if(navigator.vibrate) navigator.vibrate(20);
@@ -292,13 +293,16 @@ function startCamera() {
   });
 }
 
+let _toastTo;
 function showInstructionToast() {
   const toast = document.getElementById('instruction-toast');
   if(!toast) return;
   toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 4500);
+  _toastTo = setTimeout(dismissToast, 4500);
+}
+function dismissToast() {
+  const toast = document.getElementById('instruction-toast');
+  if(toast && toast.classList.contains('show')) toast.classList.remove('show');
 }
 
 /* ════════════════════════════════
@@ -325,6 +329,7 @@ function buildFilmstrip() {
    SELECT SECTION
 ════════════════════════════════ */
 function selectSec(i) {
+  dismissToast();
   idx = i;
   document.querySelectorAll('.frame-thumb').forEach((t, j) => t.classList.toggle('active', j === i));
   document.getElementById('cam-ctr').textContent = String(i + 1).padStart(2, '0') + '/0' + SECS.length;
@@ -371,6 +376,8 @@ btnNext.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagatio
 
 let _lCap = 0;
 function handleCapture(e) {
+  dismissToast();
+
   const now = Date.now();
   if (now - _lCap < 150) return;
   _lCap = now;
@@ -760,42 +767,5 @@ const AmbientSound = (() => {
     });
   }
 
-  function toggle() {
-    if (isPlaying) { stop(); return false; }
-    else { start(); return true; }
-  }
-
-  return { toggle, get isPlaying() { return isPlaying; } };
-})();
-
-// Sound toggle button behavior
-(function initSoundToggle() {
-  const btn = document.getElementById('sound-toggle');
-  const onIcon = document.getElementById('sound-on-icon');
-  const offIcon = document.getElementById('sound-off-icon');
-  if (!btn) return;
-
-  // Show button after camera starts
-  const showBtn = () => {
-    setTimeout(() => btn.classList.add('visible'), 1200);
-  };
-
-  const obs = new MutationObserver(() => {
-    if (!document.getElementById('loader')?.style.display ||
-         document.getElementById('loader')?.style.display === 'none') {
-      showBtn();
-      obs.disconnect();
-    }
-  });
-  obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
-  setTimeout(() => btn.classList.add('visible'), 6000);
-
-  btn.addEventListener('click', () => {
-    // Only toggle the state on successful interaction
-    const nowPlaying = !AmbientSound.isPlaying;
-    AmbientSound.toggle();
-    btn.classList.toggle('active', nowPlaying);
-    onIcon.style.display = nowPlaying ? 'block' : 'none';
-    offIcon.style.display = nowPlaying ? 'none' : 'block';
-  });
+  return { start, stop, get isPlaying() { return isPlaying; } };
 })();
