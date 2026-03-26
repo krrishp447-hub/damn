@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#12100e">
+  <meta name="description"
+    content="Krish Patil — Content Strategist & Brand Communicator. Mumbai-based. 4L+ views, YouTube growth, brand campaigns across Finance, Health, Media & Tech.">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Krish Patil — Content Strategist">
+  <meta property="og:description"
+    content="Content Strategist & Brand Communicator. Mumbai-based. 4L+ views, YouTube growth, brand campaigns across Finance, Health, Media & Tech.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=75">
+  <meta property="og:type" content="website">
+  <!-- Preconnect for fonts (async, non-render-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Font display swap prevents FOIT -->
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=Fira+Code:wght@400;700&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=Fira+Code:wght@400;700&display=swap">
+  </noscript>
+  <!-- GSAP deferred -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <title>Krish Patil — Content Strategist</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📷</text></svg>"
+    type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- CURSOR -->
+  <div id="cur-wrap">
+    <div id="cur-dot"></div>
+    <div id="cur-ring"></div>
+  </div>
+  <!-- FLASH -->
+  <div id="flash"></div>
+
+  <!-- ════ LOADER ════ -->
+  <div id="loader">
+    <div class="ldr-inner">
+      <div class="ldr-strip">
+        <div class="ldr-peg"></div>
+        <div class="ldr-frames" id="ldr-frames">
+          <div class="ldr-f" id="lf0"></div>
+          <div class="ldr-f" id="lf1"></div>
+          <div class="ldr-f" id="lf2"></div>
+          <div class="ldr-f" id="lf3"></div>
+          <div class="ldr-f" id="lf4"></div>
+          <div class="ldr-f" id="lf5"></div>
+          <div class="ldr-f" id="lf6"></div>
+          <div class="ldr-f" id="lf7"></div>
+        </div>
+        <div class="ldr-peg"></div>
+      </div>
+      <div class="ldr-apt">
+        <div class="ldr-r"></div>
+        <div class="ldr-r"></div>
+        <div class="ldr-r"></div>
+        <div class="ldr-dot"></div>
+      </div>
+      <div class="ldr-bar-wrap">
+        <div class="ldr-bar" id="ldr-bar"></div>
+      </div>
+      <div class="ldr-txt" id="ldr-txt">Developing film… <span>0%</span></div>
+    </div>
+  </div>
+  <div class="ldr-vig" id="ldr-vig"></div>
+
+  <!-- AMBIENT CANVAS -->
+  <canvas id="amb"></canvas>
+
+  <!-- ════ CAMERA SCREEN ════ -->
+  <div id="cam-screen">
+    <div class="cam-scale-wrap" id="cam-scale-wrap">
+      <div class="cam-byline">Krish Patil · Content Strategist · Mumbai 2026</div>
+
+      <div id="camera">
+        <div class="cam-hotshoe"></div>
+        <div class="cam-ridge">
+          <div class="et"></div>
+          <div class="et m"></div>
+          <div class="et"></div>
+          <div class="et"></div>
+          <div class="et m"></div>
+          <div class="et"></div>
+          <div class="et"></div>
+          <div class="et m"></div>
+        </div>
+        <div class="cam-grip"></div>
+        <div class="cam-lug cam-lug-l"></div>
+        <div class="cam-lug cam-lug-r"></div>
+
+        <div class="cam-body">
+          <div class="cam-top-row">
+            <div class="cam-vf-group">
+              <div class="cam-vf">
+                <div class="cam-vf-af"></div>
+              </div>
+              <div class="cam-brand">KP·35mm</div>
+              <div class="cam-modeltag">f/1.8 · ISO 400</div>
+            </div>
+            <div class="cam-top-mid">
+              <div class="cam-lcd">
+                <div class="lcd-v">f/1.8<span>APERTURE</span></div>
+                <div class="lcd-v">1/125<span>SHUTTER</span></div>
+                <div class="lcd-v" style="align-items:flex-end">
+                  <div class="lcd-batt">
+                    <div class="bc on"></div>
+                    <div class="bc on"></div>
+                    <div class="bc on"></div>
+                    <div class="bt"></div>
+                  </div><span>BATT</span>
+                </div>
+                <div class="lcd-sec" id="lcd-sec">STORY — ABOUT ME</div>
+              </div>
+            </div>
+            <div class="cam-dial-g">
+              <div class="cam-dial" id="cam-dial"></div>
+              <div class="cam-dial-lbl">MODE</div>
+              <div class="cam-mode" id="cam-mode">STORY</div>
+            </div>
+          </div>
+
+          <div class="cam-lens-wrap">
+            <div class="cam-lens-hood">
+              <div class="cam-lens-focus" id="lens-ring">
+                <div class="cam-focal-mark">35mm · 1:1.8</div>
+                <div class="cam-lens-ap">
+                  <div class="cam-glass">
+                    <div class="cg1"></div>
+                    <div class="cg2"></div>
+                    <div class="cg3"></div>
+                    <div class="cg-bloom"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cam-ctrl">
+            <div class="cam-ctr-w">
+              <div class="cam-ctr" id="cam-ctr">01/06</div>
+              <div class="cam-ctr-lbl">FRAMES</div>
+            </div>
+            <div class="cam-nav">
+              <button class="cam-nav-btn" id="btn-prev" aria-label="Previous">◀</button>
+              <button class="cam-nav-btn" id="btn-next" aria-label="Next">▶</button>
+            </div>
+            <div class="cam-shutter-g">
+              <div class="cam-shutter-hs">
+                <button class="cam-shutter" id="shutter" aria-label="Capture"></button>
+              </div>
+              <div class="cam-shutter-lbl">CAPTURE</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cam-film-door">
+          <div class="cam-sp">
+            <div class="cam-sprocket"></div>
+            <div class="cam-sprocket"></div>
+            <div class="cam-sprocket"></div>
+          </div>
+          <div class="cam-fw">ISO</div>
+          <div class="cam-fb">KODAK 400</div>
+          <div class="cam-sp">
+            <div class="cam-sprocket"></div>
+            <div class="cam-sprocket"></div>
+            <div class="cam-sprocket"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- filmstrip -->
+      <div class="cam-filmstrip" id="filmstrip">
+        <div class="strip-holes" id="strip-holes"></div>
+        <div class="strip-frames" id="strip-frames"></div>
+      </div>
+
+    </div> <!-- end cam-scale-wrap -->
+  </div>
+
+  <!-- INTERACTIVE FILM LOAD -->
+  <div id="interactive-load">
+    <div class="il-canister-scene">
+      <div class="il-canister" id="il-canister">
+        <div class="il-c-top"></div>
+        <div class="il-c-body">
+          <div class="il-c-label">KODAK<br><span>400</span></div>
+        </div>
+        <div class="il-c-bot"></div>
+      </div>
+    </div>
+    <div id="il-text">Tap canister to load film</div>
+  </div>
+
+  <!-- polaroid -->
+  <div id="pol-tray">
+    <div id="tap-hint"><span class="ta">↓</span><span>Tap the photo to step inside</span><span class="ta">↓</span></div>
+    <div class="print-slot" id="print-slot"></div>
+    <div class="polaroid" id="polaroid" onclick="openPanel(event)">
+      <div class="pol-photo"><img id="pol-img" src="" alt="" loading="lazy">
+        <div class="pol-wash" id="pol-wash"></div>
+      </div>
+      <div class="pol-text">
+        <div class="pol-tag" id="pol-tag">—</div>
+        <div class="pol-name" id="pol-name">Tap to open →</div>
+      </div>
+      <div class="pol-badge">OPEN →</div>
+    </div>
+  </div>
+
+  <button id="panel-close" onclick="closePanel()">✕</button>
+  <button id="adm-btn" onclick="toggleAdmin()" title="Admin" style="display:none">⚙</button>
+
+  <!-- ════════════════════════════════
+     PANEL: STORY
+════════════════════════════════ -->
+  <div class="panel" id="panel-story">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=75"
+          alt="Story" loading="lazy">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">About Me</div>
+          <h1 class="ph-title">Strategy-first.<br><em>Story-obsessed.</em></h1>
+          <p class="ph-sub">Nearly 1.5 years building real content machines — inside founder's offices, growth teams,
+            and multi-platform operations.</p>
+        </div>
+      </div>
+      <div class="pb">
+        <div class="pb-grid2">
+          <div data-rv>
+            <div class="pb-tag">My Path</div>
+            <p class="pb-p">I didn't wait for a degree to start building. At 19, I walked into a founder's office at
+              Ep.Log Media and learned what content looks like when it <strong>has to work</strong> — not just exist.
+            </p>
+            <p class="pb-p">I believe the most powerful content starts with one question: <em>"What does the audience
+                already feel that no one has articulated yet?"</em> Everything I build is grounded in audience
+              psychology, platform intuition, and relentless creative testing.</p>
+            <div class="pb-tl-wrap" id="story-timeline"></div>
+          </div>
+          <div data-rv data-rd="2">
+            <div class="pb-tag">Skills</div>
+            <div class="pb-skills" id="story-skills"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+     PANEL: WORK
+════════════════════════════════ -->
+  <div class="panel" id="panel-work">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=75"
+          alt="Work" loading="lazy">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">Case Studies</div>
+          <h1 class="ph-title">Growth Through<br><em>Strategic Content.</em></h1>
+          <p class="ph-sub" style="max-width: 650px;">I help brands scale their audience and build trust with
+            conversion-driven content, SEO-backed publishing systems, and performance campaigns.</p>
+
+        </div>
+      </div>
+      <div class="pb">
+        <div class="pb-cases" id="work-cases" data-rv></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+     PANEL: WRITING (new — articles from archive)
+════════════════════════════════ -->
+  <div class="panel" id="panel-writing">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=75"
+          alt="Writing" loading="lazy">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">Published Writing</div>
+          <h1 class="ph-title">Words that<br><em>work harder.</em></h1>
+          <p class="ph-sub">Long-form articles, research-backed explainers, and editorial content across Finance,
+            Health, Media & Tech.</p>
+        </div>
+      </div>
+      <div class="pb" id="writing-content">
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+     PANEL: PROJECTS
+════════════════════════════════ -->
+  <div class="panel" id="panel-projects">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=75"
+          alt="Projects" loading="lazy">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">Frameworks & Samples</div>
+          <h1 class="ph-title">The work behind<br><em>the work.</em></h1>
+          <p class="ph-sub">Strategy frameworks and sample deliverables — the thinking before anything goes live.</p>
+        </div>
+      </div>
+      <div class="pb">
+        <div class="pb-samples" data-rv>
+          <div class="pb-sample" id="psa">
+            <div class="pb-sample-h" onclick="toggleSample('psa')">
+              <div class="pb-sample-idx">A</div>
+              <div class="pb-sample-name">30-Day Instagram Content Calendar</div>
+              <div class="pb-sample-tog">+</div>
+            </div>
+            <div class="pb-sample-body">
+              <div class="pb-sample-content">
+                <p class="pb-st">A calendar isn't a posting schedule. It's a <strong>hypothesis about what your audience
+                    needs this month</strong> — and why. Each week serves a different funnel stage.</p>
+                <div class="pb-hl">"Reels for reach → Carousels for saves → Stories for engagement → UGC for trust. Each
+                  format serves a different algorithm goal."</div>
+                <table class="pb-tbl">
+                  <thead>
+                    <tr>
+                      <th>Week</th>
+                      <th>Theme</th>
+                      <th>Format Mix</th>
+                      <th>Intent</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="ac-td">W1</td>
+                      <td>Problem Awareness</td>
+                      <td>2× Reels, 2× Carousels, 1× Story Poll</td>
+                      <td>Reach & Discovery</td>
+                    </tr>
+                    <tr>
+                      <td class="ac-td">W2</td>
+                      <td>Social Proof</td>
+                      <td>3× UGC Reposts, 1× Founder Story, 1× Reel</td>
+                      <td>Trust & Conversion</td>
+                    </tr>
+                    <tr>
+                      <td class="ac-td">W3</td>
+                      <td>Education / Value</td>
+                      <td>2× Carousels, 1× Infographic Reel, 1× Q&A</td>
+                      <td>Retention & Authority</td>
+                    </tr>
+                    <tr>
+                      <td class="ac-td">W4</td>
+                      <td>Offer / CTA Push</td>
+                      <td>2× Reels, 1× Testimonial, 1× Offer Post</td>
+                      <td>Conversion</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="pb-sample" id="psb">
+            <div class="pb-sample-h" onclick="toggleSample('psb')">
+              <div class="pb-sample-idx">B</div>
+              <div class="pb-sample-name">YouTube Growth System — 5 Steps</div>
+              <div class="pb-sample-tog">+</div>
+            </div>
+            <div class="pb-sample-body">
+              <div class="pb-sample-content">
+                <p class="pb-st">The exact system used to hit 300+ subscribers and 1,000+ watch hours in 2.5 months.
+                  <strong>Not theory — this is what actually worked.</strong>
+                </p>
+                <div class="pb-steps">
+                  <div class="pb-step">
+                    <div class="pb-step-n">1</div>
+                    <div class="pb-step-b">
+                      <div class="pb-step-t">Content Audit</div>
+                      <div class="pb-step-d">Check retention %, cut what isn't working. Don't build on a broken
+                        foundation.</div>
+                    </div>
+                  </div>
+                  <div class="pb-step">
+                    <div class="pb-step-n">2</div>
+                    <div class="pb-step-b">
+                      <div class="pb-step-t">Keyword Architecture</div>
+                      <div class="pb-step-d">3-tier: broad discovery, mid-tail pillars, long-tail search-intent titles.
+                        Every video needs a keyword home.</div>
+                    </div>
+                  </div>
+                  <div class="pb-step">
+                    <div class="pb-step-n">3</div>
+                    <div class="pb-step-b">
+                      <div class="pb-step-t">Hook Engineering</div>
+                      <div class="pb-step-d">First 30s determines watch time. Create curiosity gaps — eliminate "why
+                        should I keep watching?"</div>
+                    </div>
+                  </div>
+                  <div class="pb-step">
+                    <div class="pb-step-n">4</div>
+                    <div class="pb-step-b">
+                      <div class="pb-step-t">Thumbnail + Title A/B</div>
+                      <div class="pb-step-d">Consistent system, test one variable. Track CTR weekly, not monthly.</div>
+                    </div>
+                  </div>
+                  <div class="pb-step">
+                    <div class="pb-step-n">5</div>
+                    <div class="pb-step-b">
+                      <div class="pb-step-t">Community Loop</div>
+                      <div class="pb-step-d">Reply to every comment in first 48 hrs. Build habits, not just views.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pb-sample" id="psc">
+            <div class="pb-sample-h" onclick="toggleSample('psc')">
+              <div class="pb-sample-idx">C</div>
+              <div class="pb-sample-name">Multi-Platform Brand Voice Guide</div>
+              <div class="pb-sample-tog">+</div>
+            </div>
+            <div class="pb-sample-body">
+              <div class="pb-sample-content">
+                <p class="pb-st">A brand voice guide replaces a hundred micro-decisions with one north star.</p>
+                <div class="pb-hl">"Your brand voice is the answer to: 'How would our brand say this on a Tuesday at
+                  11pm in the comments?'"</div>
+                <div class="vg">
+                  <div class="vc">
+                    <div class="vn">We Are</div>
+                    <div class="vd">Confident · Direct · Warm but not soft · Witty without trying</div>
+                  </div>
+                  <div class="vc" style="border-color:rgba(232,113,74,.2)">
+                    <div class="vn" style="color:var(--coral)">We Are Not</div>
+                    <div class="vd">Corporate buzzwords · Over-explaining · Apologetic · Trend-chasing</div>
+                  </div>
+                  <div class="vc" style="grid-column:1/-1">
+                    <div class="vn" style="color:var(--teal)">The Test</div>
+                    <div class="vd">Would a smart 28-year-old say this to a friend with genuine enthusiasm? If "maybe" —
+                      rewrite it.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pb-sample" id="psd">
+            <div class="pb-sample-h" onclick="toggleSample('psd')">
+              <div class="pb-sample-idx">D</div>
+              <div class="pb-sample-name">Startup Breakdown: GenWise Downfall</div>
+              <div class="pb-sample-tog">+</div>
+            </div>
+            <div class="pb-sample-body">
+              <div class="pb-sample-content">
+                <p class="pb-st">GenWise raised $3.5M, built a 30 Lakh+ user base, and still shut down with ₹12.1 Cr in
+                  losses. Demonstrates <strong>business literacy, research depth, and writing for humans and
+                    algorithms.</strong></p>
+                <div class="pb-hl">"Good content strategists understand business — that's what separates content
+                  professionals from content workers."</div>
+                <table class="pb-tbl">
+                  <thead>
+                    <tr>
+                      <th>Factor</th>
+                      <th>What Happened</th>
+                      <th>Impact</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Financial Burn</td>
+                      <td>FY25: ₹1Cr revenue vs ₹12.1Cr loss</td>
+                      <td class="rd-td">Critical</td>
+                    </tr>
+                    <tr>
+                      <td>Monetisation Gap</td>
+                      <td>30L+ users, few paying customers</td>
+                      <td class="rd-td">Critical</td>
+                    </tr>
+                    <tr>
+                      <td>Feature Bloat</td>
+                      <td>Social, finance, health, AI — all at once</td>
+                      <td class="ac-td">High</td>
+                    </tr>
+                    <tr>
+                      <td>Market Misread</td>
+                      <td>Built for investors, not seniors</td>
+                      <td class="ac-td">High</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+     PANEL: APPROACH
+════════════════════════════════ -->
+  <div class="panel" id="panel-approach">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=75"
+          alt="Approach" loading="lazy">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">Philosophy</div>
+          <h1 class="ph-title">Three principles<br><em>I never break.</em></h1>
+          <p class="ph-sub">How I think before I write — and why it changes what the work becomes.</p>
+        </div>
+      </div>
+      <div class="pb">
+        <div class="pb-approach" data-rv>
+          <div class="pb-ap">
+            <div class="pb-ap-n">01</div>
+            <div class="pb-ap-icon">🎯</div>
+            <div class="pb-ap-title">Strategy Before Brief</div>
+            <p class="pb-ap-text">Before I write a word, I ask: what does the audience already feel that we haven't said
+              yet? Most brands ask "what should we say?" That's the wrong question.</p>
+            <div class="pb-ap-quote">"We won — not because of a bigger budget, but because we had <strong>clarity before
+                we had a concept.</strong>"</div>
+          </div>
+          <div class="pb-ap">
+            <div class="pb-ap-n">02</div>
+            <div class="pb-ap-icon">📐</div>
+            <div class="pb-ap-title">Systems, Not Sprints</div>
+            <p class="pb-ap-text">I don't build campaigns. I build content ecosystems — publishing rhythms, platform
+              logic, and feedback loops that get smarter over time. The goal isn't a spike. It's a flywheel.</p>
+            <div class="pb-ap-quote">"Left behind a <strong>sustainable publishing system</strong>, not just a channel
+              with 300 subscribers."</div>
+          </div>
+          <div class="pb-ap">
+            <div class="pb-ap-n">03</div>
+            <div class="pb-ap-icon">🎙️</div>
+            <div class="pb-ap-title">Voice as an Instrument</div>
+            <p class="pb-ap-text">Writing the same story four different ways — and having each feel native to its
+              platform — is one of the highest-leverage content skills. Voice is an instrument you tune for the room.
+            </p>
+            <div class="pb-ap-quote">"From performance ad scripts to <strong>emotional brand narratives</strong> — I
+              adjust the instrument to the room."</div>
+          </div>
+        </div>
+        <div class="pb-tag" data-rv>Testimonials</div>
+        <div class="pb-testis" data-rv>
+          <div class="pb-testi">
+            <div class="pb-testi-q">"</div>
+            <p class="pb-testi-text">Krish has a rare ability to understand what the audience is thinking before the
+              brand does. He reframed our entire campaign brief with one question — and we hit our best results in three
+              years.</p>
+            <div class="pb-testi-person">
+              <div class="pb-testi-av">CL</div>
+              <div>
+                <div class="pb-testi-name">Content Lead</div>
+                <div class="pb-testi-role">GenSxty Tribe Pvt. Ltd.</div>
+              </div>
+            </div>
+          </div>
+          <div class="pb-testi">
+            <div class="pb-testi-badge">Request pending</div>
+            <div class="pb-testi-q">"</div>
+            <p class="pb-testi-text">What impressed me most was that Krish didn't just execute — he owned the outcome.
+              When the channel needed to grow, he built a system, not just a calendar. The results spoke for themselves.
+            </p>
+            <div class="pb-testi-person">
+              <div class="pb-testi-av">SM</div>
+              <div>
+                <div class="pb-testi-name">Senior Team Member</div>
+                <div class="pb-testi-role">GenSxty Tribe Pvt. Ltd.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+     PANEL: CONTACT
+════════════════════════════════ -->
+  <div class="panel" id="panel-contact">
+    <div class="panel-inner">
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=75"
+          alt="Contact" loading="lazy" style="object-position:center 30%">
+        <div class="ph-overlay"></div>
+        <div class="ph-grain"></div>
+        <div class="ph-accent"></div>
+        <div class="ph-content">
+          <div class="ph-tag">Let's Talk</div>
+          <h1 class="ph-title">Let's make<br><em>something real.</em></h1>
+          <p class="ph-sub">Mumbai-based. Open to remote. Content strategy, brand management, or senior social media
+            roles.</p>
+        </div>
+      </div>
+      <div class="pb">
+        <div class="pb-contact" data-rv>
+          <div>
+            <div class="pb-avail">
+              <div class="avail-dot"></div>Open to opportunities
+            </div>
+            <p class="pb-p">I'm looking for teams that believe great content starts with a great question — not just a
+              brief and a deadline.</p>
+            <div class="pb-clinks">
+              <a href="mailto:krrishp447@gmail.com" class="pb-clink">
+                <div class="pb-clink-icon">@</div>krrishp447@gmail.com
+              </a>
+              <a href="tel:+919167680181" class="pb-clink">
+                <div class="pb-clink-icon">☎</div>+91 91676 80181
+              </a>
+              <a href="https://gamma.app/docs/Krish-Patil-8nb4z6mkimwzpj5" target="_blank" rel="noopener"
+                class="pb-clink">
+                <div class="pb-clink-icon">↗</div>Digital CV / Gamma Portfolio
+              </a>
+              <a href="https://www.linkedin.com/in/krrishp447" target="_blank" rel="noopener" class="pb-clink">
+                <div class="pb-clink-icon">in</div>LinkedIn Profile
+              </a>
+            </div>
+          </div>
+          <div class="pb-why">
+            <div class="pb-why-title">I'm the right hire if you need...</div>
+            <div class="pb-why-items">
+              <div class="pb-why-item">
+                <div class="pb-why-num">01</div>
+                <div>
+                  <div class="pb-why-t">Someone who thinks AND makes</div>
+                  <div class="pb-why-d">Strategy isn't useful without execution. I've done both.</div>
+                </div>
+              </div>
+              <div class="pb-why-item">
+                <div class="pb-why-num">02</div>
+                <div>
+                  <div class="pb-why-t">Platform-fluent writing across every tone</div>
+                  <div class="pb-why-d">Finance explainers to emotional brand narratives — same discipline, different
+                    instruments.</div>
+                </div>
+              </div>
+              <div class="pb-why-item">
+                <div class="pb-why-num">03</div>
+                <div>
+                  <div class="pb-why-t">Self-directed, ownership-first</div>
+                  <div class="pb-why-d">I don't wait to be managed. I figure out what needs to happen and make it
+                    happen.</div>
+                </div>
+              </div>
+              <div class="pb-why-item">
+                <div class="pb-why-num">04</div>
+                <div>
+                  <div class="pb-why-t">Real business literacy</div>
+                  <div class="pb-why-d">I've written about SWPs, the Union Budget, AI market sizing, and startup
+                    autopsies — and made each one readable.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ ADMIN ════ -->
+  <div id="adm-ov" onclick="toggleAdmin()"></div>
+  <div id="adm-panel">
+    <div class="adm-hdr">
+      <div class="adm-title">Portfolio <span>Admin</span></div>
+      <div class="adm-x" onclick="toggleAdmin()">✕</div>
+    </div>
+    <div class="adm-body">
+      <div class="adm-sec">
+        <div class="adm-sec-hdr" onclick="toggleAdmSec(this)">Experience <span>STORY</span></div>
+        <div class="adm-sec-body" id="adm-exp"></div>
+        <div style="padding:.45rem .95rem .95rem"><button class="adm-add" onclick="addExp()">+ Add Experience</button>
+        </div>
+      </div>
+      <div class="adm-sec">
+        <div class="adm-sec-hdr" onclick="toggleAdmSec(this)">Case Studies <span>WORK</span></div>
+        <div class="adm-sec-body" id="adm-work"></div>
+        <div style="padding:.45rem .95rem .95rem"><button class="adm-add" onclick="addWork()">+ Add Case Study</button>
+        </div>
+      </div>
+      <div class="adm-sec">
+        <div class="adm-sec-hdr" onclick="toggleAdmSec(this)">Skills <span>STORY</span></div>
+        <div class="adm-sec-body" id="adm-skills"></div>
+        <div style="padding:.45rem .95rem .95rem"><button class="adm-add" onclick="addSkill()">+ Add Skill
+            Category</button></div>
+      </div>
+      <button class="adm-save" onclick="saveAll()">💾 &nbsp;Save & Apply Changes</button>
+      <div class="adm-saved" id="adm-saved">Changes saved and applied ✓</div>
+    </div>
+  </div>
+
+  <!-- AMBIENT SOUND TOGGLE -->
+  <button id="sound-toggle" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+    <svg id="sound-on-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+    <svg id="sound-off-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+  </button>
+
+  <script src="app.js" defer></script>
+</body>
+
+</html>
