@@ -199,6 +199,7 @@ const SECS = [
   { id: 'panel-work', n: 'WORK', lcd: 'WORK — CASE STUDIES', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=280&q=65', tag: 'Work', sub: 'Work that had stakes.' },
   { id: 'panel-writing', n: 'WRITING', lcd: 'WRITING — ARTICLES', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=280&q=65', tag: 'Writing', sub: 'Words that work harder.' },
   { id: 'panel-projects', n: 'SAMPLES', lcd: 'SAMPLES — FRAMEWORKS', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=280&q=65', tag: 'Frameworks', sub: 'The work behind the work.' },
+  { id: 'panel-video', n: 'VIDEO', lcd: 'VIDEO — SHOWREEL', img: 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=280&q=65', tag: 'Directing', sub: 'Motion & Storytelling.' },
   { id: 'panel-approach', n: 'APPROACH', lcd: 'APPROACH — PHILOSOPHY', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=280&q=65', tag: 'Philosophy', sub: 'Three principles I never break.' },
   { id: 'panel-contact', n: 'CONTACT', lcd: 'CONTACT — LETS TALK', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=280&q=65', tag: "Let's Talk", sub: 'Mumbai-based. Open to remote.' },
 ];
