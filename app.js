@@ -69,6 +69,22 @@ let D = {
       p4l: '📈 IMPACT', p4: 'Designed a roadmap projecting 20%+ AOV lifts through threshold freebies and cart optimizations. Every physical product becomes an on-ramp to recurring digital revenue.',
       link: '#',
       images: ['assets/cases/slicktek/image13.png', 'assets/cases/slicktek/image5.png', 'assets/cases/slicktek/image31.png', 'assets/cases/slicktek/image26.png']
+    },
+    {
+      num: '06', title: 'SEO & AEO Automation Agent', stat: 'Backend', sl: 'Automation',
+      p1l: '🔥 RESULT', p1: '<strong>Built and deployed a custom Node.js automation agent that optimizes raw copy for both traditional search (Google) and Answer Engines (ChatGPT, Perplexity).</strong>',
+      p2l: '🧠 CONTEXT', p2: 'Search behavior is evolving. Ranking on Google isn’t enough anymore; brands need to be the definitive answer outputted by AI models. Doing this manually scales poorly.',
+      p3l: '⚙️ ACTION', p3: 'Engineered an automated pipeline that structures, metadata-tags, and enriches content to satisfy both Google’s EEAT guidelines and LLM retrieval logic simultaneously, ensuring wide API compatibility without exposing sensitive environment variables.',
+      p4l: '📈 IMPACT', p4: 'Created a scalable, deployable system that future-proofs content against the AI search transition—turning hours of manual structuring into seconds of automated execution.',
+      link: 'https://github.com/krrishp447-hub/Automation'
+    },
+    {
+      num: '07', title: 'Rekindle for Men Landing Page', stat: 'D2C', sl: 'Conversion',
+      p1l: '🔥 RESULT', p1: '<strong>Built a high-converting, premium D2C landing page for a men\'s health brand, focusing on education and trust in a sensitive niche.</strong>',
+      p2l: '🧠 CONTEXT', p2: 'Men\'s health supplements often suffer from "aggressive" or "shady" branding. Rekindle needed a science-first, approachable aesthetic that spoke to long-term wellness rather than quick fixes.',
+      p3l: '⚙️ ACTION', p3: 'Designed a minimal, typography-focused UI using Tailwind CSS and Lucide icons. Engineered smooth scroll reveals and interactive components to break down complex hormonal science into digestible, trust-building sections.',
+      p4l: '📈 IMPACT', p4: 'Created a professional, enterprise-grade digital storefront that differentiates the brand from competitors and establishes it as a science-backed authority in the male wellness space.',
+      link: 'https://rekindle-for-men-landing.vercel.app'
     }
   ],
   writing: [
@@ -107,7 +123,7 @@ let D = {
   ]
 };
 try { 
-  const s = localStorage.getItem('kp_d_v4'); 
+  const s = localStorage.getItem('kp_d_v6'); 
   if (s) { 
     const parsed = JSON.parse(s);
     D.experience = parsed.experience || D.experience;
@@ -706,7 +722,7 @@ function delWork(i) { D.cases.splice(i, 1); renderAdmWork() }
 function addSkill() { D.skills.push({ cat: 'New Category', items: 'Skill 1\nSkill 2', wide: false }); renderAdmSkills() }
 function delSkill(i) { D.skills.splice(i, 1); renderAdmSkills() }
 function saveAll() {
-  try { localStorage.setItem('kp_d_v4', JSON.stringify(D)) } catch (e) { }
+  try { localStorage.setItem('kp_d_v6', JSON.stringify(D)) } catch (e) { }
   renderAll();
   const m = document.getElementById('adm-saved');
   m.classList.add('show'); setTimeout(() => m.classList.remove('show'), 2400);

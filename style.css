@@ -989,16 +989,14 @@ body.cur-s #cur-ring {
   border: none;
 }
 
-/* large invisible hit area for touch devices only */
-@media (pointer: coarse) {
-  .cam-shutter::after {
-    content: '';
-    position: absolute;
-    inset: -25px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.01);
-    z-index: 10;
-  }
+/* large invisible hit area for all devices */
+.cam-shutter::after {
+  content: '';
+  position: absolute;
+  inset: -25px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.01);
+  z-index: 10;
 }
 
 .cam-shutter::before {
